@@ -1,0 +1,51 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Lokasi tempat foto yang diupload lewat admin akan disimpan
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+collections:
+  - name: "posts"
+    label: "Artikel Blog"
+    label_singular: "Artikel"
+    folder: "content/posts"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: "title"
+    summary: "{{title}} — {{date}}"
+    fields:
+      - { label: "Judul Artikel", name: "title", widget: "string" }
+      - {
+          label: "Slug (alamat URL artikel)",
+          name: "slug",
+          widget: "string",
+          hint: "Huruf kecil semua, pakai tanda - sebagai pemisah, tanpa spasi. Contoh: tips-menghafal-quran",
+        }
+      - {
+          label: "Tanggal Terbit",
+          name: "date",
+          widget: "datetime",
+          format: "YYYY-MM-DD",
+          date_format: "YYYY-MM-DD",
+          time_format: false,
+        }
+      - {
+          label: "Kategori",
+          name: "category",
+          widget: "select",
+          options: ["Edukasi", "Tips Parenting", "Kegiatan", "Pengumuman"],
+        }
+      - {
+          label: "Ringkasan Singkat",
+          name: "excerpt",
+          widget: "text",
+          hint: "1-2 kalimat yang tampil di daftar artikel.",
+        }
+      - {
+          label: "Isi Artikel",
+          name: "content",
+          widget: "text",
+          hint: "Tulis bebas. Pisahkan tiap paragraf dengan menekan Enter dua kali (baris kosong). Untuk teks TEBAL, apit dengan **begini**. Untuk MIRING, apit dengan *begini*.",
+        }
