@@ -1,0 +1,12 @@
+{
+  "published": false,
+  "title": "Contoh Event (draf, tidak tayang)",
+  "slug": "contoh-event",
+  "tagline": "Ini hanya contoh pengisian. Salin pola isiannya untuk event Bapak.",
+  "date": "2027-01-01",
+  "time": "08.00 - 12.00 WIB",
+  "location": "Rumah Qur'an Kuningan, Perum Alam Asri, Gereba",
+  "fee": "Gratis",
+  "cta_label": "Daftar Sekarang",
+  "body": "## Tentang Acara\n\nTulis penjelasan acara di sini. Pisahkan paragraf dengan baris kosong.\n\n## Rangkaian Acara\n\n- Pembukaan\n- Kajian utama\n- Tanya jawab\n\n## Syarat Peserta\n\nBuka untuk umum. Mohon konfirmasi kehadiran lewat WhatsApp admin."
+}
