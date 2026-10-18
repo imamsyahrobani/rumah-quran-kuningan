@@ -1,0 +1,7 @@
+{
+  "published": false,
+  "title": "Contoh Halaman (draf, tidak tayang)",
+  "slug": "contoh-halaman",
+  "description": "Contoh halaman kode HTML. Salin polanya untuk event Bapak.",
+  "html": "<style>\n  .hero { background: var(--ink); color: #fff; padding: 64px 24px; text-align: center; }\n  .hero h1 { font-family: 'Fraunces', serif; font-size: 2.4rem; margin: 0 0 12px; }\n  .btn { display: inline-block; background: var(--gold); color: #1a1400; padding: 14px 28px; border-radius: 6px; font-weight: 700; text-decoration: none; margin-top: 20px; }\n  .isi { max-width: 720px; margin: 0 auto; padding: 48px 24px; }\n</style>\n\n<section class=\"hero\">\n  <h1>Judul Event</h1>\n  <p>Sabtu, 1 Januari 2027 - Rumah Qur'an Kuningan</p>\n  <a class=\"btn\" href=\"https://wa.me/6283869262287\">Daftar via WhatsApp</a>\n</section>\n\n<section class=\"isi\">\n  <h2>Tentang Acara</h2>\n  <p>Tulis penjelasan acara di sini.</p>\n</section>"
+}

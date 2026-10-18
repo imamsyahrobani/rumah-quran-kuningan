@@ -7,11 +7,16 @@ media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
 
 collections:
+  # ------------------------------------------------------------
+  #  ARTIKEL BLOG
+  # ------------------------------------------------------------
   - name: "posts"
     label: "Artikel Blog"
     label_singular: "Artikel"
     folder: "content/posts"
     create: true
+    extension: "json"
+    format: "json"
     slug: "{{slug}}"
     identifier_field: "title"
     summary: "{{title}} — {{date}}"
@@ -61,78 +66,57 @@ collections:
           editor_components: ["image"],
         }
 
-  - name: "events"
-    label: "Halaman Event"
-    label_singular: "Event"
-    folder: "content/events"
+  # ------------------------------------------------------------
+  #  HALAMAN (KODE HTML SENDIRI)
+  # ------------------------------------------------------------
+  - name: "pages"
+    label: "Halaman (Kode HTML)"
+    label_singular: "Halaman"
+    folder: "content/pages"
     create: true
+    extension: "json"
+    format: "json"
     slug: "{{slug}}"
     identifier_field: "title"
-    summary: "{{title}} — {{date}}"
+    summary: "{{title}} — /{{slug}}/"
     editor:
       preview: false
     fields:
       - {
-          label: "Tampilkan halaman ini?",
+          label: "Tayangkan halaman ini?",
           name: "published",
           widget: "boolean",
           default: true,
-          hint: "Matikan kalau masih draf atau ingin menyembunyikan event ini dari situs.",
+          hint: "Matikan kalau masih draf atau ingin menyembunyikan halaman dari situs.",
         }
-      - { label: "Nama Event", name: "title", widget: "string" }
+      - { label: "Judul Halaman", name: "title", widget: "string", hint: "Tampil di tab browser dan di judul saat link dibagikan." }
       - {
           label: "Slug (alamat halaman)",
           name: "slug",
           widget: "string",
-          hint: "Huruf kecil, pakai tanda -, tanpa spasi. Contoh: kajian-ramadhan. Alamat jadinya namasitus.com/event/kajian-ramadhan",
+          hint: "Huruf kecil, pakai tanda -, tanpa spasi. Contoh: kajian-ramadhan. Alamatnya jadi namasitus.com/kajian-ramadhan/ . Jangan pakai: admin, assets, content, blog, index.",
         }
       - {
-          label: "Kalimat Penjelas Singkat",
-          name: "tagline",
+          label: "Deskripsi Singkat (opsional)",
+          name: "description",
           widget: "string",
           required: false,
-          hint: "Satu kalimat di bawah judul. Juga dipakai sebagai teks pratinjau saat link dibagikan di WhatsApp.",
+          hint: "Satu kalimat untuk pratinjau saat link dibagikan di WhatsApp atau mesin pencari.",
         }
       - {
-          label: "Tanggal Acara",
-          name: "date",
-          widget: "datetime",
-          format: "YYYY-MM-DD",
-          date_format: "YYYY-MM-DD",
-          time_format: false,
-          hint: "Setelah tanggal ini lewat, halaman otomatis menampilkan 'Acara sudah berlangsung' dan tombol daftar disembunyikan.",
-        }
-      - { label: "Waktu", name: "time", widget: "string", required: false, hint: "Contoh: 08.00 - 12.00 WIB" }
-      - { label: "Lokasi", name: "location", widget: "string", required: false }
-      - { label: "Link Peta (opsional)", name: "maps_url", widget: "string", required: false, hint: "Tempel link Google Maps." }
-      - { label: "Biaya / Infaq", name: "fee", widget: "string", required: false, hint: "Contoh: Gratis, atau Rp50.000" }
-      - { label: "Poster / Banner", name: "image", widget: "image", required: false }
-      - {
-          label: "Isi Halaman",
-          name: "body",
-          widget: "markdown",
-          hint: "Jelaskan acaranya: tujuan, pembicara, rangkaian acara, syarat peserta, dan sebagainya. Boleh menyisipkan gambar.",
-          buttons: ["bold", "italic", "heading-two", "heading-three", "link", "bulleted-list", "numbered-list", "quote"],
-          editor_components: ["image"],
+          label: "Kode HTML",
+          name: "html",
+          widget: "code",
+          default_language: "html",
+          allow_language_selection: false,
+          output_code_only: true,
+          hint: "Tempel atau tulis kode HTML di sini. (1) Kalau Bapak hanya menulis isi halaman saja, tanpa <html> dan <body>, situs otomatis menambahkan header dan footer Rumah Qur'an. (2) Kalau Bapak menulis kode LENGKAP yang diawali <!DOCTYPE html>, halaman dipakai apa adanya tanpa tambahan apa pun. CSS boleh ditulis di dalam <style>. Warna situs bisa dipakai lewat var(--ink), var(--gold), var(--maroon), var(--parchment).",
         }
       - {
-          label: "Tulisan di Tombol",
-          name: "cta_label",
-          widget: "string",
-          default: "Daftar Sekarang",
+          label: "Unggah Gambar untuk Halaman Ini (opsional)",
+          name: "images",
+          widget: "list",
           required: false,
-        }
-      - {
-          label: "Link Pendaftaran Lain (opsional)",
-          name: "register_url",
-          widget: "string",
-          required: false,
-          hint: "Kosongkan kalau pendaftaran lewat WhatsApp admin. Isi dengan link Google Form dan sejenisnya kalau ada.",
-        }
-      - {
-          label: "Pesan Otomatis WhatsApp (opsional)",
-          name: "wa_message",
-          widget: "string",
-          required: false,
-          hint: "Teks yang terisi otomatis saat peserta menekan tombol daftar. Kosongkan untuk memakai teks standar.",
+          hint: "Unggah foto di sini, lalu panggil di kode HTML dengan alamat /assets/uploads/NAMA-FILE.jpg . Pakai nama file huruf kecil tanpa spasi (contoh: poster-ramadhan.jpg).",
+          field: { label: "Gambar", name: "image", widget: "image" },
         }
